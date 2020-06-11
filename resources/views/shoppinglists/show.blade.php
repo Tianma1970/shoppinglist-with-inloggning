@@ -23,7 +23,9 @@
                     @endforeach
                 </ol><hr>
                 <div class="d-flex justify-content-around">
+                    @if($shoppinglist->shoppingitem)
                     <a href="/shoppingitems/{{ $shoppingitem->id }}/edit" class="btn btn-info">{{ __('Edit Shoppingitem') }}</a>
+                    @endif
                     <input type="submit" class="btn btn-danger" value="{{ __('Delete selected Item') }}"><br>
                     <a href="/shoppingitems/create" class="btn btn-info">{{ __('Back') }}</a>
                 </div>
