@@ -19,15 +19,19 @@
     </div>
 
     <div class="jumbotron col-md-12">
-        <h1>{{ __('Your Shoppinglists') }}</h1>
-        <ul>
-            @foreach(Auth::user()->shoppinglists as $shoppinglist)
-            <li>
-                <a href ="{{ $shoppinglist->id}}">{{ $shoppinglist->title}}</a>
-            </li>
-            @endforeach
+        @if(count(Auth::user()->shoppinglists) > 0)
+            <p>{{ __('Your Shoppinglists') }}</p>
+            <ul>
+                @foreach(Auth::user()->shoppinglists as $shoppinglist)
+                <li>
+                    <a href ="{{ $shoppinglist->id}}">{{ $shoppinglist->title}}</a>
+                </li>
+                @endforeach
 
-        </ul>
+            </ul>
+            @else
+            <h3 class="text-center">{{ __('No Shoppinglists') }}</h3>
+        @endif
     </div>
     @include('/templates/footer')
 </div>

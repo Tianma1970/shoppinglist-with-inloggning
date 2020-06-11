@@ -14,13 +14,16 @@
                         </div>
                     @endif
 
+                    @if(count(Auth::user()->shoppinglists) > 0)
                     {{ __('Your Shoppinglists') }}
                     <ul>
                     @foreach(Auth::user()->shoppinglists as $shoppinglist)
                         <li>{{ $shoppinglist->title }}</li>
-
                     @endforeach
                     </ul>
+                    @else
+                    <p class="text-center">{{ __('You have no Shoppinglists yet. You can create your first one') }}<a href="/shoppinglists/create">{{ __(' here ')}}</a></p>
+                    @endif
                 </div>
             </div>
         </div>
