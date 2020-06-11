@@ -23,3 +23,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/shoppinglists/create', 'ShoppinglistController@create');
 Route::post('/shoppinglist/store', 'ShoppinglistController@store');
+Route::get('/shoppinglists/{shoppinglist}/show', 'ShoppinglistController@show');
+
+/**
+ * Routes for Shoppingitems
+ */
+Route::get('/shoppingitems/create', 'ShoppingitemController@create');
+Route::post('/shoppingitems/store', 'ShoppingitemController@store');
