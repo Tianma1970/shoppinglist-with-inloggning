@@ -74,8 +74,10 @@ class ShoppingitemController extends Controller
      */
     public function edit(Shoppingitem $shoppingitem)
     {
+        $shoppingitems = Shoppingitem::orderBy('name')->get();
         return view('/shoppingitems/edit', [
-            'shoppingitem'  => $shoppingitem
+            'shoppingitem'  => $shoppingitem,
+            'shoppingitems' => $shoppingitems
         ]);
     }
 
