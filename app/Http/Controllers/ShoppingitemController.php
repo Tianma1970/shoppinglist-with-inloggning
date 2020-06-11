@@ -95,8 +95,12 @@ class ShoppingitemController extends Controller
      * @param  \App\Shoppingitem  $shoppingitem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Shoppingitem $shoppingitem)
+    public function deleteMany(Shoppingitem $shoppingitem, Request $request, Shoppinglist $shoppinglist)
     {
-        //
+        $idsToDelete = $request->input('ids');
+
+        Shoppingitem::destroy($idsToDelete);
+
+        return redirect('/shoppingitems/create')->with('status', 'Shoppingitem deleted successfully');
     }
 }
