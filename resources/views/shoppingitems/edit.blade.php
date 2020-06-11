@@ -6,7 +6,7 @@
     @include('partials/status')
     <div class="jumbotron col-12">
 
-        <h1 class="text-center">{{ __('Edit ') }}{{ $shoppingitem->name }}</h1>
+        <h1 class="text-center">{{ __('Edit a selected Shoppingitem') }}</h1>
 
         <form method="POST" action="/shoppingitem/{{$shoppingitem->id}}/update">
             <!--We need to set a csrf-token (Cross site request forgery)in order to send the form-->
@@ -21,6 +21,18 @@
                         <option value="food">{{ __('Food') }}</option>
                         <option value="snack">{{ __('Snack') }}</option>
                         <option value="other">{{ __('Other') }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="category" class="col-md-4 text-md-right control-label">{{ __('Article') }}</label>
+                <div class="col-md-6">
+                    <select class="form-control" name="{{ $shoppingitem->id }}" id="{{ $shoppingitem->id }}">
+                        <option value="">{{ __('Select an Article') }}</option>
+                        @foreach( Auth::user()->shoppingitems as $shoppingitem )
+                        <option value="{{ $shoppingitem->id }}">{{ $shoppingitem->name }}</option>
+                        @endforeach
+
                     </select>
                 </div>
             </div>
