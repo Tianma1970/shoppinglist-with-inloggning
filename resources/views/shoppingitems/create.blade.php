@@ -52,26 +52,22 @@
 
     <div class="row">
         <div class="jumbotron col-12">
-            <form method="Post" action="/shoppinglist/delete">
+            <h1 class="text-center">{{ __(' Your Shoppinglists') }}</h1>
+            <form method="post" action="/shoppinglist/delete">
                 @csrf
-                <h1 class="text-center">{{ __(' Your Shoppinglists') }}</h1>
                 <ol>
                 @foreach(Auth::user()->shoppinglists as $shoppinglist)
                     <li><br>
                         <input type="checkbox" name="ids[]" value="{{ $shoppinglist->id }}"><a href="/shoppinglists/{{ $shoppinglist->id }}/show">&nbsp;&nbsp;{{ $shoppinglist->title }}</a></li><hr class="col-10">
                 @endforeach
                 </ol>
-            </div>
-            <div class="d-flex justify-content-around col-12">
-                <a href="/shoppingitems/create" class="btn btn-info">{{ __('Add some Shoppingitems') }}</a>
-                {{--  <a href="/shoppinglists/{{ $shoppinglist->id }}" class="btn btn-info">{{ __('Edit a Shoppinglist') }}</a>  --}}
-                <input type="submit" class="btn btn-danger" value="Delete selected Shoppinglist">
-            </div>
-        </form>
-        {{--  @else
-        <p class="text-center">{{ __('You need to create a Shoppinglist first') }}</p>
-        <a href="/shoppinglists/create" class="btn btn-success">{{ __('Create your first Shoppinglist') }}</a>  --}}
-        {{--  @endif  --}}
+
+                <div class="d-flex justify-content-around col-12">
+                    <a href="/shoppingitems/create" class="btn btn-info">{{ __('Add some Shoppingitems') }}</a>
+                    <input type="submit" class="btn btn-danger" value="{{ __('Delete selected Shoppinglist') }}">
+                </div>
+            </form>
+        </div>
     </div>
     @include('/templates/footer')
 </div>
