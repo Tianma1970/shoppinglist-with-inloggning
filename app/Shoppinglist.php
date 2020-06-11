@@ -24,6 +24,6 @@ class Shoppinglist extends Model
 
     public function user()
     {
-        return $this->hasMany(Shoppinglist::class);
+        return $this->belongsTo(User::class);
     }
 }

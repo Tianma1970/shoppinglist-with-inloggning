@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Shoppinglist::class);
     }
+
+    public function shoppingitems()
+    {
+        return $this->hasManyThrough(Shoppingitem::class, Shoppinglist::class);
+    }
 }
