@@ -22,7 +22,10 @@
 
                     @endforeach
                 </ol><hr>
-                <input type="submit" class="btn btn-danger" value="{{ __('Delete selected Item') }}"><br>
+                <div class="d-flex justify-content-around">
+                    <a href="/shoppingitems/{{ $shoppingitem->id }}/edit" class="btn btn-info">{{ __('Edit Shoppingitem') }}</a>
+                    <input type="submit" class="btn btn-danger" value="{{ __('Delete selected Item') }}"><br>
+                </div>
             </form>
         </div>
     </div>
