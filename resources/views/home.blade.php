@@ -16,7 +16,7 @@
 
                     {{ __('Your Shoppinglists') }}
                     <ul>
-                    @foreach($shoppinglists as $shoppinglist)
+                    @foreach(Auth::user()->shoppinglists as $shoppinglist)
                         <li>{{ $shoppinglist->title }}</li>
 
                     @endforeach

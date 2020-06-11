@@ -21,9 +21,9 @@
     <div class="jumbotron col-md-12">
         <h1>{{ __('Your Shoppinglists') }}</h1>
         <ul>
-            @foreach($shoppinglists as $shoppinglist)
+            @foreach(Auth::user()->shoppinglists as $shoppinglist)
             <li>
-                {{ $shoppinglist->title}}
+                <a href ="{{ $shoppinglist->id}}">{{ $shoppinglist->title}}</a>
             </li>
             @endforeach
 
