@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Shoppinglist;
+use App\Shoppingitem;
 use Illuminate\Http\Request;
 
 class ShoppinglistController extends Controller
@@ -59,7 +60,13 @@ class ShoppinglistController extends Controller
      */
     public function show(Shoppinglist $shoppinglist)
     {
-        //
+        $shoppingitems = $shoppinglist->shoppingitem;
+
+        return view('/shoppinglists/show', [
+            'shoppinglist'  => $shoppinglist,
+            'shoppingitems' => $shoppingitems
+
+        ]);
     }
 
     /**
