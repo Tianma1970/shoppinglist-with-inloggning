@@ -98,8 +98,13 @@ class ShoppinglistController extends Controller
      * @param  \App\Shoppinglist  $shoppinglist
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Shoppinglist $shoppinglist)
+    public function deleteMany(Shoppinglist $shoppinglist, Request $request)
     {
-        //
+
+        $idsToDelete = $request->input('ids');
+
+        Shoppinglist::destroy($idsToDelete);
+
+        return redirect('/shoppingitems/create')->with('status', 'Shoppinglist deleted successfully');
     }
 }
