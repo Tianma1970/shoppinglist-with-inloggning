@@ -16,6 +16,10 @@ class CreateShoppingitemsTable extends Migration
         Schema::create('shoppingitems', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->bigInteger('shoppinglist_id');
+            $table->string('name');
+            $table->string('category');
+            $table->bigInteger('quantity');
         });
     }
 
