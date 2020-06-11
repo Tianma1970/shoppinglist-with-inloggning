@@ -28,7 +28,7 @@
                     <div class="col-md-6">
                         <select class="form-control" name="shoppinglist_id" id="shoppinglist_id">
                         <option value="">{{ __('Select a Shoppinglist') }}</option>
-                        @foreach($shoppinglists as $shoppinglist)
+                        @foreach(Auth::user()->shoppinglists as $shoppinglist)
                             <option value="{{ $shoppinglist->id }}">{{ $shoppinglist->title }}
                         @endforeach
                         </select>
