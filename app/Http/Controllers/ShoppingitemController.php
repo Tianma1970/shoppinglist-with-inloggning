@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\Shoppinglist;
 use App\Shoppingitem;
 use Illuminate\Http\Request;
 
@@ -24,7 +26,11 @@ class ShoppingitemController extends Controller
      */
     public function create()
     {
-        //
+        $shoppinglists = Shoppinglist::orderBy('title')->get();
+
+        return view('shoppingitems/create', [
+            'shoppinglists'     => $shoppinglists
+        ]);
     }
 
     /**
@@ -35,7 +41,18 @@ class ShoppingitemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validData = $request->validate([
+            'shoppinglist_id'   => 'required',
+            'category'          => 'required',
+            'quantity'          => 'required',
+            'name'              => 'required'
+        ]);
+
+        // $validData['user_id'] = Auth::id();
+
+        $shoppingitem = Shoppingitem::create($validData);
+
+        return redirect('shoppingitems/create')->with('status', 'Shoppingitem added successfully');
     }
 
     /**
