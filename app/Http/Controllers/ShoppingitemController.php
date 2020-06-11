@@ -74,7 +74,9 @@ class ShoppingitemController extends Controller
      */
     public function edit(Shoppingitem $shoppingitem)
     {
-        //
+        return view('/shoppingitems/edit', [
+            'shoppingitem'  => $shoppingitem
+        ]);
     }
 
     /**
@@ -86,7 +88,19 @@ class ShoppingitemController extends Controller
      */
     public function update(Request $request, Shoppingitem $shoppingitem)
     {
-        //
+        $validData = $request->validate([
+            'category'  => 'required',
+            'name'      => 'required',
+            'quantity'  => 'required'
+        ]);
+
+        $shoppingitem->category = $validData['category'];
+        $shoppingitem->name = $validData['name'];
+        $shoppingitem->quantity = $validData['quantity'];
+
+        $shoppingitem->save();
+
+        return redirect('/shoppingitems/create')->with('status', 'Shoppingitem updated successfully');
     }
 
     /**
