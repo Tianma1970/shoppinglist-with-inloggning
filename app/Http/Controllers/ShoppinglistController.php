@@ -25,7 +25,11 @@ class ShoppinglistController extends Controller
      */
     public function create()
     {
-        return view('/shoppinglists/create');
+        $shoppinglists = Shoppinglist::orderBy('title')->get();
+
+        return view('/shoppinglists/create', [
+            'shoppinglists'     => $shoppinglists
+        ]);
     }
 
     /**
@@ -44,7 +48,7 @@ class ShoppinglistController extends Controller
         $validData['user_id'] = Auth::id();
         $shoppinglist = Shoppinglist::create($validData);
 
-        return redirect('/shoppinglists/create')->with('status', 'Shoppinglist created successfully');
+        return redirect('/home')->with('status', 'Shoppinglist created successfully');
     }
 
     /**
