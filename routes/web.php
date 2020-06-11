@@ -23,7 +23,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/shoppinglists/create', 'ShoppinglistController@create');
 Route::post('/shoppinglist/store', 'ShoppinglistController@store');
+Route::post('/shoppinglist/delete', 'ShoppinglistController@deleteMany');
 Route::get('/shoppinglists/{shoppinglist}/show', 'ShoppinglistController@show');
+
 
 /**
  * Routes for Shoppingitems
