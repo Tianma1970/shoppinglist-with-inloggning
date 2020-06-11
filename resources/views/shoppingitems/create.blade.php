@@ -52,6 +52,7 @@
 
     <div class="row">
         <div class="jumbotron col-12">
+            @if(count(Auth::user()->shoppinglists) > 0)
             <h1 class="text-center">{{ __(' Your Shoppinglists') }}</h1>
             <form method="post" action="/shoppinglist/delete">
                 @csrf
@@ -61,6 +62,9 @@
                         <input type="checkbox" name="ids[]" value="{{ $shoppinglist->id }}"><a href="/shoppinglists/{{ $shoppinglist->id }}/show">&nbsp;&nbsp;{{ $shoppinglist->title }}</a></li><hr class="col-10">
                 @endforeach
                 </ol>
+                @else
+                <p class="text-center">{{ __('You have no Shoppinglists yet. You can create your first one') }}<a href="/shoppinglists/create">{{ __(' here ')}}</a></p>
+                @endif
 
                 <div class="d-flex justify-content-around col-12">
                     <a href="/shoppingitems/create" class="btn btn-info">{{ __('Add some Shoppingitems') }}</a>
