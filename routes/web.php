@@ -30,3 +30,4 @@ Route::get('/shoppinglists/{shoppinglist}/show', 'ShoppinglistController@show');
  */
 Route::get('/shoppingitems/create', 'ShoppingitemController@create');
 Route::post('/shoppingitems/store', 'ShoppingitemController@store');
+Route::post('/shoppingitems/delete', 'ShoppingitemController@deleteMany');
