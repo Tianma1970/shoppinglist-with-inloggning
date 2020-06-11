@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Shoppinglist;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class ShoppinglistController extends Controller
      */
     public function create()
     {
-        //
+        return view('/shoppinglists/create');
     }
 
     /**
@@ -35,7 +36,15 @@ class ShoppinglistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd('store');
+        $validData = $request->validate([
+            'title'     => 'required'
+            ]);
+
+        $validData['user_id'] = Auth::id();
+        $shoppinglist = Shoppinglist::create($validData);
+
+        return redirect('/shoppinglists/create')->with('status', 'Shoppinglist created successfully');
     }
 
     /**
