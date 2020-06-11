@@ -25,6 +25,7 @@
                 <div class="d-flex justify-content-around">
                     <a href="/shoppingitems/{{ $shoppingitem->id }}/edit" class="btn btn-info">{{ __('Edit Shoppingitem') }}</a>
                     <input type="submit" class="btn btn-danger" value="{{ __('Delete selected Item') }}"><br>
+                    <a href="/shoppingitems/create" class="btn btn-info">{{ __('Back') }}</a>
                 </div>
             </form>
         </div>
