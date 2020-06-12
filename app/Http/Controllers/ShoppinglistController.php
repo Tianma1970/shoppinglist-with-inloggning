@@ -78,7 +78,9 @@ class ShoppinglistController extends Controller
      */
     public function edit(Shoppinglist $shoppinglist)
     {
-        //
+        return view('shoppinglists/edit', [
+            'shoppinglist'  => $shoppinglist
+        ]);
     }
 
     /**
@@ -90,7 +92,15 @@ class ShoppinglistController extends Controller
      */
     public function update(Request $request, Shoppinglist $shoppinglist)
     {
-        //
+        $validData = $request->validate([
+            'title' => 'required'
+        ]);
+
+        $shoppinglist->title = $validData['title'];
+
+        $shoppinglist->save();
+
+        return redirect ('/shoppingitems/create')->with('status', 'Shoppinglist edited successfully');
     }
 
     /**
