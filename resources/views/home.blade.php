@@ -18,7 +18,7 @@
                     {{ __('Your Shoppinglists') }}
                     <ul>
                     @foreach(Auth::user()->shoppinglists as $shoppinglist)
-                        <li>{{ $shoppinglist->title }}</li>
+                        <li><a href="/shoppinglists/{{ $shoppinglist->id }}/show">{{ $shoppinglist->title }}</a></li>
                     @endforeach
                     </ul>
                     @else
