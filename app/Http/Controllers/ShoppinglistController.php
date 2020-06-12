@@ -58,13 +58,14 @@ class ShoppinglistController extends Controller
      * @param  \App\Shoppinglist  $shoppinglist
      * @return \Illuminate\Http\Response
      */
-    public function show(Shoppinglist $shoppinglist)
+    public function show(Shoppinglist $shoppinglist, Shoppingitem $shoppingitem)
     {
         $shoppingitems = $shoppinglist->shoppingitem;
 
         return view('/shoppinglists/show', [
             'shoppinglist'  => $shoppinglist,
-            'shoppingitems' => $shoppingitems
+            'shoppingitems' => $shoppingitems,
+            'shoppingitem'  => $shoppingitem
 
         ]);
     }
