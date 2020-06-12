@@ -13,27 +13,27 @@
             @csrf
             <!--/We need to set a csrf-token in order to send the form-->
             <div class="form-group row">
-                <label for="category" class="col-md-4 text-md-right control-label">{{ __('Category') }}</label>
-                <div class="col-md-6">
-                    <select class="form-control" name="category" id="category">
-                        <option value="">{{ __('Select a Category') }}</option>
-                        <option value="food">{{ __('Food') }}</option>
-                        <option value="snack">{{ __('Snack') }}</option>
-                        <option value="other">{{ __('Other') }}</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group row">
                 <label for="shoppinglist_id" class="col-md-4 text-md-right control-label">{{ __('Shoppinglist') }}</label>
-                    <div class="col-md-6">
-                        <select class="form-control" name="shoppinglist_id" id="shoppinglist_id">
+                <div class="col-md-6">
+                    <select class="form-control" name="shoppinglist_id" id="shoppinglist_id">
                         <option value="">{{ __('Select a Shoppinglist') }}</option>
                         @foreach(Auth::user()->shoppinglists as $shoppinglist)
-                            <option value="{{ $shoppinglist->id }}">{{ $shoppinglist->title }}
-                        @endforeach
+                        <option value="{{ $shoppinglist->id }}">{{ $shoppinglist->title }}
+                            @endforeach
                         </select>
                     </div>
-            </div>
+                </div>
+                <div class="form-group row">
+                    <label for="category" class="col-md-4 text-md-right control-label">{{ __('Category') }}</label>
+                    <div class="col-md-6">
+                        <select class="form-control" name="category" id="category">
+                            <option value="">{{ __('Select a Category') }}</option>
+                            <option value="food">{{ __('Food') }}</option>
+                            <option value="snack">{{ __('Snack') }}</option>
+                            <option value="other">{{ __('Other') }}</option>
+                        </select>
+                    </div>
+                </div>
             <div class="form-group row">
                 <label for="name" class="col-md-4 text-md-right control-label">{{ __('Name') }}</label>
                 <div class="col-md-6">
